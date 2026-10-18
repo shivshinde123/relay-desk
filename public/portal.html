@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en"><head><title>Get help: Relay Desk</title>
+<meta charset="utf-8"><link rel="icon" href="/images/favicon.svg" type="image/svg+xml"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/styles.css">
+<script src="/js/common.js"></script>
+</head><body>
+<header class="wrap"><nav class="nav glass" aria-label="Main">
+  <a class="brand" href="/"><span class="brand-dot"></span>Relay Desk</a>
+  <div class="nav-links">
+    <a href="/" >Home</a><a href="/portal.html" aria-current="page">Get help</a><a href="/dashboard.html" >Agent desk</a>
+    <button class="btn icon-btn" id="theme-toggle" type="button"></button>
+  </div>
+</nav></header>
+<main class="wrap page">
+  <section id="auth-view" class="glass panel" style="max-width:480px;margin:2rem auto" data-tilt>
+    <h2>Sign in to get help</h2>
+    <div class="tabs" role="tablist">
+      <button class="btn tab" role="tab" id="tab-login" aria-selected="true" type="button">Sign in</button>
+      <button class="btn tab" role="tab" id="tab-register" aria-selected="false" type="button">Create account</button>
+    </div>
+    <form id="auth-form" novalidate>
+      <div class="field hidden" id="name-field"><label for="a-name">Full name</label><input id="a-name" autocomplete="name"></div>
+      <div class="field"><label for="a-email">Email</label><input id="a-email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="a-pass">Password</label><input id="a-pass" type="password" autocomplete="current-password" required><span class="hint" id="pass-hint"></span></div>
+      <p class="error" id="auth-error" role="alert"></p>
+      <button class="btn btn-primary" id="auth-submit" type="submit">Sign in</button>
+      <p class="hint" style="margin-top:1rem">Demo: customer@demo.test / Customer@12345</p>
+    </form>
+  </section>
+
+  <div id="app-view" class="hidden">
+    <h1 style="font-size:clamp(1.8rem,3.6vw,2.8rem)">Tell us what went wrong</h1>
+    <div class="two-col">
+      <section class="glass panel" aria-labelledby="new-h">
+        <h2 id="new-h">New ticket</h2>
+        <form id="ticket-form" novalidate>
+          <div class="field"><label for="t-subject">Subject</label><input id="t-subject" maxlength="200" placeholder="Short summary of the problem"></div>
+          <div class="field"><label for="t-desc">What happened?</label><textarea id="t-desc" maxlength="5000" placeholder="Tell us what you expected, what happened instead, and when it started."></textarea></div>
+          <div class="suggest" id="suggest" aria-live="polite"><span class="hint">Keep typing and we will suggest a category and urgency.</span></div>
+          <div class="field" style="margin-top:1rem"><label for="t-cat">Category</label>
+            <select id="t-cat"><option value="">Let AI decide</option></select></div>
+          <p class="error" id="ticket-error" role="alert"></p>
+          <button class="btn btn-primary" type="submit" id="ticket-submit">Send ticket</button>
+        </form>
+      </section>
+      <section aria-labelledby="mine-h">
+        <div style="display:flex;justify-content:space-between;align-items:center"><h2 id="mine-h">Your tickets</h2><button class="btn btn-small" id="signout" type="button">Sign out</button></div>
+        <div id="mine"><p class="hint">Loading…</p></div>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+<script src="/js/portal.js"></script>
+</body></html>
