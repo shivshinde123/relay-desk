@@ -31,8 +31,7 @@ jobs:
       - name: Prepare static preview
         run: |
           mkdir _site
-          cp index.html _site/index.html
-          cp -R public _site/public
+          cp -R public/. _site/
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
